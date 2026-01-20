@@ -1,3 +1,5 @@
+const PageController = require("../../app/controllers/web/page-controller")
+
 module.exports = {
     group: {
         prefix: '/pages'
@@ -7,16 +9,12 @@ module.exports = {
         {
             method: 'get',
             path: "/",
-            handler: (req, res) => {
-                res.send("Home")
-            }
+            handler: PageController.home
         },
         {
             method: 'get',
             path: "/about",
-            handler: (req, res) => {
-                res.send("About Page")
-            }
+            handler: PageController.about
         }
     ]
 }
