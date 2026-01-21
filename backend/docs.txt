@@ -28,21 +28,23 @@ step 7 sequelize db:seed:all
 
 
 postgresql setup in ubuntu
-step1  sudo apt update
+step 1  sudo apt update
 step 2 sudo apt install postgresql
 step 3 psql --version
-step 4  sudo service postgresql start
+step 4 sudo service postgresql start
 step 5 sudo service postgresql status
 step 6 sudo -u postgres psql login
 
+if the connection faild then follow this steps:
 sudo nano /etc/postgresql/16/main/postgresql.conf
 set: listen_addresses = '*'
 sudo service postgresql restart
 
-create user only : sudo -u postgres psql
+create user only : 
+sudo -u postgres psql
 CREATE USER bikeserve WITH PASSWORD 'Jeevan@2026';
 ALTER USER bikeserve CREATEDB;
-\q
+\q for edit
 
 check postgres status : sudo service postgresql status
 check server is listen or not : sudo ss -ltnp | grep 5432
@@ -60,3 +62,11 @@ for login postgres:
  psql -h 127.0.0.1 -U bikeserve -d postgres
  -- Login as postgres superuser
 sudo -u postgres psql -h 127.0.0.1 -U postgres
+
+/** User Auth
+ - Creating auth models
+ - Handling exceptions
+ - Hasing user password
+ - Creating an acccess token
+ 
+
