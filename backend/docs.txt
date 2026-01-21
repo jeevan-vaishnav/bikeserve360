@@ -1,0 +1,62 @@
+#DB Setup
+#https://www.postgresql.org/
+#https://dbeaver.io/download/ for local machine Installing windows 
+Installing Sequelize
+step 1
+npm i sequelize --g
+npm i sequelize-cli --g
+npm i pg or npm install -g pg --save
+
+step 2
+creating file .sequelizerc
+const path = require('path')
+
+module.exports = {
+    'config': path.resolve('./config', 'database.js'),
+    'models-path': path.resolve('app', 'models'),
+    'migrations-path': path.resolve('database', 'migrations'),
+    'seeders-path': path.resolve('database', 'seeders'),
+}
+step 3
+now run sequelize init
+step 4
+create new user model
+sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string,password:string
+step 5 sequelize db:migrate
+step 6 sequelize seed:generate --name user-seed
+step 7 sequelize db:seed:all
+
+
+postgresql setup in ubuntu
+step1  sudo apt update
+step 2 sudo apt install postgresql
+step 3 psql --version
+step 4  sudo service postgresql start
+step 5 sudo service postgresql status
+step 6 sudo -u postgres psql login
+
+sudo nano /etc/postgresql/16/main/postgresql.conf
+set: listen_addresses = '*'
+sudo service postgresql restart
+
+create user only : sudo -u postgres psql
+CREATE USER bikeserve WITH PASSWORD 'Jeevan@2026';
+ALTER USER bikeserve CREATEDB;
+\q
+
+check postgres status : sudo service postgresql status
+check server is listen or not : sudo ss -ltnp | grep 5432
+jeevan@LAPTOP-TMKMAPL3:~$ sudo service postgresql restart
+
+# Connect to PostgreSQL database using the `psql` command-line tool
+# -h 127.0.0.1     → Connect to the PostgreSQL server at localhost (IPv4)
+# -U bikeserve     → Use the PostgreSQL user 'bikeserve'
+# -d postgres      → Connect to the 'postgres' database (default DB)
+# This command will prompt for the password of the 'bikeserve' user
+# If successful, you get the interactive PostgreSQL prompt: postgres=>
+jeevan@LAPTOP-TMKMAPL3:~$ psql -h 127.0.0.1 -U bikeserve -d postgres
+
+for login postgres:
+ psql -h 127.0.0.1 -U bikeserve -d postgres
+ -- Login as postgres superuser
+sudo -u postgres psql -h 127.0.0.1 -U postgres
