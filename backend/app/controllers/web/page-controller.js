@@ -1,6 +1,7 @@
 // backend/app/controllers/web/page-controller.js
 class PageController {
     home(req, res) {
+        throw new Error("An error happend")
         res.send("Home Page with Controller")
     }
     about(req, res) {
