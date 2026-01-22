@@ -1,4 +1,5 @@
 const { User } = require("../../models")
+const bcrypt = require("bcrypt")
 const InvalidCredentialException = require("../../exceptions/invalid-credential-exception")
 
 class AuthController {
@@ -15,7 +16,8 @@ class AuthController {
 
 
         if (!user) throw new InvalidCredentialException()
-        if (password !== user.password) throw new InvalidCredentialException()
+        if (!await bcrypt.compare(password, user.password))
+            throw new InvalidCredentialException()
 
         res.send(user)
     }

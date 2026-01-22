@@ -22,9 +22,12 @@ now run sequelize init
 step 4
 create new user model
 sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string,password:string
-step 5 sequelize db:migrate
+step 5 sequelize db:migrate // migrate table 
 step 6 sequelize seed:generate --name user-seed
 step 7 sequelize db:seed:all
+
+options if table delete 
+sequelize db:migrate:undo:all
 
 
 postgresql setup in ubuntu
@@ -68,5 +71,8 @@ sudo -u postgres psql -h 127.0.0.1 -U postgres
  - Handling exceptions
  - Hasing user password
  - Creating an acccess token
+
+ install npm i bcrypt
+
  
 
