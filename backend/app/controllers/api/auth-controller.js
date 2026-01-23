@@ -1,6 +1,9 @@
 const { User } = require("../../models")
 const bcrypt = require("bcrypt")
+const jwt = require('jsonwebtoken')
+
 const InvalidCredentialException = require("../../exceptions/invalid-credential-exception")
+const { appKey, tokenExpiresIn } = require("../../../config/app")
 
 class AuthController {
 
@@ -19,7 +22,14 @@ class AuthController {
         if (!await bcrypt.compare(password, user.password))
             throw new InvalidCredentialException()
 
-        res.send(user)
+        console.log("Access Token")
+        const payload = { id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName }
+        const accessToken = jwt.sign(payload, appKey, { expiresIn: tokenExpiresIn })
+        // this is line is helping to generate crypto key 
+        // const key = require('crypto').randomBytes(64).toString('hex')
+        // console.log(accessToken)
+
+        res.send({ user, ...{ accessToken } })
     }
 
     async register(req, res) {

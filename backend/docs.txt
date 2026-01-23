@@ -72,7 +72,8 @@ sudo -u postgres psql -h 127.0.0.1 -U postgres
  - Hasing user password
  - Creating an acccess token
 
- install npm i bcrypt
-
+ install npm i bcrypt for Hashing
+ install npm i jsonwebtoken for token
+ 
  
 
