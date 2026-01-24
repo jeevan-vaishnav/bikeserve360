@@ -74,6 +74,14 @@ sudo -u postgres psql -h 127.0.0.1 -U postgres
 
  install npm i bcrypt for Hashing
  install npm i jsonwebtoken for token
+
+
+ next
+ creating a repository
+ creating a service
+ creating a user refresh token 
+ creating a tokenizer module 
+ 
  
  
 

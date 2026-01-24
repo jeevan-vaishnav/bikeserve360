@@ -1,9 +1,9 @@
-const { User } = require("../../models")
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken')
 
 const InvalidCredentialException = require("../../exceptions/invalid-credential-exception")
 const { appKey, tokenExpiresIn } = require("../../../config/app")
+const UserRepository = require('../../repositories/user-repository')
 
 class AuthController {
 
@@ -11,12 +11,7 @@ class AuthController {
         // console.log(req.body)
         const { email, password } = req.body
 
-        const user = await User.findOne({
-            where: {
-                email
-            }
-        })
-
+        const user = await UserRepository.findByEmail(email)
 
         if (!user) throw new InvalidCredentialException()
         if (!await bcrypt.compare(password, user.password))
