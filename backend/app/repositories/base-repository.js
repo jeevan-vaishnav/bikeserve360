@@ -1,3 +1,5 @@
+const ModelNotFoundException = require('../../app/exceptions/model-not-found-exception')
+
 
 class BaseRepository {
 
@@ -17,6 +19,8 @@ class BaseRepository {
         const record = await this.model.findOne({
             where
         })
+
+        if (!record) throw new ModelNotFoundException(this.model.name.toLowerCase())
 
         return record
     }
