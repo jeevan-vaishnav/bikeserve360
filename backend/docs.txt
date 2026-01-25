@@ -81,6 +81,10 @@ sudo -u postgres psql -h 127.0.0.1 -U postgres
  creating a service
  creating a user refresh token 
  creating a tokenizer module 
+
+
+ new model created in sequelize
+ sequelize model:generate --name RefreshToken --attributes token:string,revoked:boolean,userId:integer
  
  
  

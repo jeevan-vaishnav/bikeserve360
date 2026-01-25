@@ -17,12 +17,12 @@ class AuthController {
 
         console.log("Access Token")
         const payload = { id: user.id, email: user.email, firstName: user.firstName, lastName: user.lastName }
-        const accessToken = await AuthServices.generateToken(payload)
+        const tokens = await AuthServices.generateTokens(payload)
+        console.log(tokens)
         // this is line is helping to generate crypto key 
         // const key = require('crypto').randomBytes(64).toString('hex')
         // console.log(accessToken)
-
-        res.send({ user, ...{ accessToken } })
+        res.send({ user, ...tokens })
     }
 
     async register(req, res) {
