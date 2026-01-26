@@ -86,6 +86,11 @@ sudo -u postgres psql -h 127.0.0.1 -U postgres
  new model created in sequelize
  sequelize model:generate --name RefreshToken --attributes token:string,revoked:boolean,userId:integer
  
+
+ now we go for middleware
+ Creating auth middleware
+ finishing user registration
+ 
  
  
 

@@ -14,6 +14,7 @@ class AuthServices {
         // return jwt.sign(payload, appKey, { expiresIn: tokenExpiresIn })
 
         const refreshToken = await Tokenizer.generateRefreshToken()
+
         await RefreshToken.create({
             token: refreshToken,
             userId: payload.id
