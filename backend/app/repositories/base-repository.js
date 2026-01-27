@@ -25,7 +25,9 @@ class BaseRepository {
         return record
     }
     async getAll() { }
-    async create() { }
+    async create(data) {
+        return this.model.create(data)
+    }
     async update() { }
     async destory() { }
 
