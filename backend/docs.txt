@@ -90,6 +90,10 @@ sudo -u postgres psql -h 127.0.0.1 -U postgres
  now we go for middleware
  Creating auth middleware
  finishing user registration
+
+
+ validation 
+ install express-validator
  
  
  
